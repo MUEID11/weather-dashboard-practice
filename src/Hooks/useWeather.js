@@ -14,11 +14,14 @@ const useWeather = () => {
     longitude: "",
     latitude: "",
   });
+
   const [loading, setLoading] = useState({
     state: false,
     message: "",
   });
+
   const [error, setError] = useState(null);
+
 
   const fetchWeatherData = async(latitude, longitude) => {
     try{
@@ -27,11 +30,13 @@ const useWeather = () => {
         state: true,
         message: "loading weather data",
       });
+  
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`);
       if(!response.ok){
         const errorMessage = `Fetching weather data failed: ${response.status}`;
         throw new Error(errorMessage)
       }
+
       const data = await response.json();
 
       const updatedWeatherData = {
