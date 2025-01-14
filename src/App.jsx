@@ -2,11 +2,12 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import WeatherBoard from "./components/Weather/WeatherBoard";
 
-import { WeatherProvider } from "./provider";
+import { FavoriteLocationProvider, WeatherProvider } from "./provider";
 
 function App() {
   return (
     <WeatherProvider>
+      <FavoriteLocationProvider>
       <div className="grid place-items-center h-screen">
         <Header />
         <main>
@@ -15,6 +16,7 @@ function App() {
           </section>
         </main>
       </div>
+      </FavoriteLocationProvider>
     </WeatherProvider>
   );
 }
